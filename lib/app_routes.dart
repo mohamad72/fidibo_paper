@@ -9,7 +9,7 @@ final GoRouter appRouter = GoRouter(
   routes: [
     GoRoute(
       path: '/beforeStart',
-      builder: (context, state) => const BeforeStartGame(),
+      builder: (context, state) => BeforeStartGame.wrappedRoute(),
     ),
     GoRoute(
       path: '/running',

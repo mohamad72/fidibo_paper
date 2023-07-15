@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:fidibo_paper/choose.dart';
+import 'package:fidibo_paper/constants.dart';
 import 'package:fidibo_paper/coordinates.dart';
 import 'package:fidibo_paper/responsive.dart';
 import 'package:fidibo_paper/square.dart';
@@ -20,7 +21,7 @@ class _RunningGameScreenState extends State<RunningGameScreen> {
 
   @override
   void initState() {
-    squaresList = widget.squaresList;
+    squaresList = widget.squaresList.toList();
     Timer.periodic(const Duration(milliseconds: 8), (timer) {
       onFrameReceived();
     });
