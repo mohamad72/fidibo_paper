@@ -32,11 +32,11 @@ class _BeforeStartGameState extends State<BeforeStartGame> {
 
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((_) => buildSquares());
     super.initState();
   }
 
-  void buildSquares() {
+  void buildSquares(BuildContext context) {
+    if (squaresList.isNotEmpty) return;
     var xCoordinate = Responsive.width(context) * 0.17 - 60.0;
     var yCoordinate = Responsive.height(context) - 140.0;
     List.generate(5, (index) {
@@ -76,10 +76,12 @@ class _BeforeStartGameState extends State<BeforeStartGame> {
       xCoordinate = xCoordinate + 4;
       yCoordinate = yCoordinate + 4;
     });
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
+    buildSquares(context);
     return Scaffold(
       body: SafeArea(
         child: SizedBox(
@@ -134,8 +136,10 @@ class _BeforeStartGameState extends State<BeforeStartGame> {
                       width: double.infinity,
                       padding: const EdgeInsets.all(20.0),
                       child: ElevatedButton(
-                        onPressed: () {
-                          context.push('/running', extra: state.map(notReadyToStart: (_) => [], readyToStart: (state) => state.squares));
+                        onPressed: () async{
+                          await context.push('/running', extra: state.map(notReadyToStart: (_) => [], readyToStart: (state) => state.squares));
+                          squaresList.clear();
+                          buildSquares(context);
                         },
                         child: Text(
                           'شروع با ${state.map(notReadyToStart: (_) => 0, readyToStart: (state) => state.squares.length)} مهره',
