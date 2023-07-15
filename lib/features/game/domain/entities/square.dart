@@ -69,6 +69,16 @@ class Square extends Equatable {
     );
   }
 
+  bool doSquaresCollide(Square secondSquare) {
+    if ((topLeftCorner.x + size) >= secondSquare.topLeftCorner.x && topLeftCorner.x <= (secondSquare.topLeftCorner.x + secondSquare.size)) {
+      if ((topLeftCorner.y + size) >= secondSquare.topLeftCorner.y &&
+          topLeftCorner.y <= (secondSquare.topLeftCorner.y + secondSquare.size)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   @override
   List<Object> get props => [id];
 }

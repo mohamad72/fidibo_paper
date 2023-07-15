@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:fidibo_paper/features/game/domain/entities/choose.dart';
-import 'package:fidibo_paper/application/constants.dart';
-import 'package:fidibo_paper/features/game/domain/entities/coordinates.dart';
 import 'package:fidibo_paper/commons/responsive.dart';
+import 'package:fidibo_paper/features/game/domain/entities/choose.dart';
+import 'package:fidibo_paper/features/game/domain/entities/coordinates.dart';
 import 'package:fidibo_paper/features/game/domain/entities/square.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class RunningGameScreen extends StatefulWidget {
   final List<Square> squaresList;
@@ -36,10 +36,15 @@ class _RunningGameScreenState extends State<RunningGameScreen> {
           children: squaresList.map((square) => buildSquare(square)).toList(),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Theme.of(context).primaryColor,
+        foregroundColor: Colors.white,
+        mini: false,
+        onPressed: () => context.pop(),
+        child: const Icon(Icons.restart_alt),
+      ),
     );
   }
-
-  bool isGameFinished = false;
 
   void onFrameReceived() {
     for (int i = 0; i < squaresList.length; i++) {
@@ -50,7 +55,7 @@ class _RunningGameScreenState extends State<RunningGameScreen> {
     for (int i = 0; i < squaresList.length; i++) {
       innerLoop:
       for (int j = i + 1; j < squaresList.length; j++) {
-        if (doSquaresCollide(squaresList[i], squaresList[j])) {
+        if (squaresList[i].doSquaresCollide(squaresList[j])) {
           final isWin = squaresList[i].choose.isWinnerInFightWith(squaresList[j].choose);
           isSquaresCollide = true;
           if (isWin == null) {
@@ -69,7 +74,6 @@ class _RunningGameScreenState extends State<RunningGameScreen> {
       }
     }
     if (squaresList.length == 1) {
-      setState(() => isGameFinished = true);
       return;
     }
     if (isSquaresCollide) {
@@ -87,25 +91,14 @@ class _RunningGameScreenState extends State<RunningGameScreen> {
     if (otherSquare.isEmpty) return;
   }
 
-  bool doSquaresCollide(Square firstSquare, Square secondSquare) {
-    if ((firstSquare.topLeftCorner.x + firstSquare.size) >= secondSquare.topLeftCorner.x &&
-        firstSquare.topLeftCorner.x <= (secondSquare.topLeftCorner.x + secondSquare.size)) {
-      if ((firstSquare.topLeftCorner.y + firstSquare.size) >= secondSquare.topLeftCorner.y &&
-          firstSquare.topLeftCorner.y <= (secondSquare.topLeftCorner.y + secondSquare.size)) {
-        return true;
-      }
-    }
-    return false;
-  }
-
   Widget buildSquare(Square square) {
     return Positioned(
-      left: isGameFinished ? 0 : square.topLeftCorner.x.toDouble(),
-      top: isGameFinished ? 0 : square.topLeftCorner.y.toDouble(),
+      left: square.topLeftCorner.x.toDouble(),
+      top: square.topLeftCorner.y.toDouble(),
       child: AnimatedContainer(
           duration: const Duration(milliseconds: 900),
-          width: isGameFinished ? Responsive.width(context) : square.size.toDouble(),
-          height: isGameFinished ? Responsive.height(context) : square.size.toDouble(),
+          width: square.size.toDouble(),
+          height: square.size.toDouble(),
           alignment: Alignment.center,
           decoration: BoxDecoration(
             color: square.choose.backgroundColor,

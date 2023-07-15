@@ -104,8 +104,16 @@ class _BeforeStartGameState extends State<BeforeStartGame> {
                         final RenderBox box = context.findRenderObject() as RenderBox;
                         final topLeftPosition = box.globalToLocal(offset);
                         if (topLeftPosition.dy < (MediaQuery.of(context).size.height * acceptFrameRatio) - (square.size - 24)) {
-                          BlocProvider.of<BeforeStartGameCubit>(context).changeOneSquarePosition(squaresList[index]);
+                          final oldCoordinates = square.topLeftCorner;
                           squaresList[index].setTopLeftCorner(Coordinates(x: offset.dx, y: offset.dy - 24));
+                          for (int i = 0; i < squaresList.length; i++) {
+                            if (squaresList[i] == square) continue;
+                            if (square.doSquaresCollide(squaresList[i])) {
+                              squaresList[index].setTopLeftCorner(oldCoordinates);
+                              return;
+                            }
+                          }
+                          BlocProvider.of<BeforeStartGameCubit>(context).changeOneSquarePosition(squaresList[index]);
                           setState(() {});
                         }
                       },

@@ -1,4 +1,4 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fidibo_paper/features/game/presentations/managers/before_start_game_state.dart';
 import 'package:fidibo_paper/features/game/domain/entities/square.dart';
 
