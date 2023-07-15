@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 
 class Coordinates extends Equatable {
-  final int x;
-  final int y;
+  final double x;
+  final double y;
 
   const Coordinates({
     required this.x,

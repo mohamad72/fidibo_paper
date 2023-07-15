@@ -7,7 +7,7 @@ import 'package:fidibo_paper/wall.dart';
 class Square extends Equatable {
   final int id;
   Coordinates topLeftCorner;
-  final int size;
+  final double size;
   DirectionMove directionMove;
   final Choose choose;
 
@@ -56,7 +56,7 @@ class Square extends Equatable {
   Square copyWith({
     int? id,
     Coordinates? topLeftCorner,
-    int? size,
+    double? size,
     DirectionMove? directionMove,
     Choose? choose,
   }) {

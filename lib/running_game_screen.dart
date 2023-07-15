@@ -2,29 +2,25 @@ import 'dart:async';
 
 import 'package:fidibo_paper/choose.dart';
 import 'package:fidibo_paper/coordinates.dart';
-import 'package:fidibo_paper/direction_move.dart';
 import 'package:fidibo_paper/responsive.dart';
 import 'package:fidibo_paper/square.dart';
 import 'package:flutter/material.dart';
 
 class RunningGameScreen extends StatefulWidget {
-  const RunningGameScreen({Key? key}) : super(key: key);
+  final List<Square> squaresList;
+
+  const RunningGameScreen({required this.squaresList, Key? key}) : super(key: key);
 
   @override
   _RunningGameScreenState createState() => _RunningGameScreenState();
 }
 
 class _RunningGameScreenState extends State<RunningGameScreen> {
-  List<Square> squaresList = [
-    Square(id: 1, choose: Choose.rock, directionMove: DirectionMove.bottomRight, size: 80, topLeftCorner: const Coordinates(x: 10, y: 210)),
-    Square(
-        id: 2, choose: Choose.scissors, directionMove: DirectionMove.bottomLeft, size: 80, topLeftCorner: const Coordinates(x: 100, y: 12)),
-    Square(
-        id: 3, choose: Choose.paper, directionMove: DirectionMove.bottomLeft, size: 80, topLeftCorner: const Coordinates(x: 100, y: 120)),
-  ];
+  List<Square> squaresList = [];
 
   @override
   void initState() {
+    squaresList = widget.squaresList;
     Timer.periodic(const Duration(milliseconds: 8), (timer) {
       onFrameReceived();
     });
@@ -81,8 +77,8 @@ class _RunningGameScreenState extends State<RunningGameScreen> {
   }
 
   void onFrameReceivedInSquare(Square square, List<Square> otherSquare) {
-    final height = Responsive.height(context).toInt();
-    final width = Responsive.width(context).toInt();
+    final height = Responsive.height(context);
+    final width = Responsive.width(context);
     square.goToNextMove();
     if (square.isCollideToWall(Coordinates(x: width, y: height))) {
       square.makeDirectionReflection(Coordinates(x: width, y: height));

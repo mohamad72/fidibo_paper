@@ -1,3 +1,5 @@
+import 'package:fidibo_paper/before_start_game.dart';
+import 'package:fidibo_paper/light_theme.dart';
 import 'package:fidibo_paper/running_game_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -12,11 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Fidibo Paper',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const RunningGameScreen(),
+      theme: getLightTheme(),
+      home: const BeforeStartGame(),
     );
   }
 }
