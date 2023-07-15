@@ -1,4 +1,4 @@
-import 'package:fidibo_paper/square.dart';
+import 'package:fidibo_paper/features/game/domain/entities/square.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'before_start_game_state.freezed.dart';

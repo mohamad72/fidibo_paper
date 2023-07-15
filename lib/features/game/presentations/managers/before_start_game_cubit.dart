@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:fidibo_paper/before_start_game_state.dart';
-import 'package:fidibo_paper/square.dart';
+import 'package:fidibo_paper/features/game/presentations/managers/before_start_game_state.dart';
+import 'package:fidibo_paper/features/game/domain/entities/square.dart';
 
 class BeforeStartGameCubit extends Cubit<BeforeStartGameState> {
   BeforeStartGameCubit() : super(const BeforeStartGameState.notReadyToStart());

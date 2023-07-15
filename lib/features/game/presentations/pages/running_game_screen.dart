@@ -1,10 +1,10 @@
 import 'dart:async';
 
-import 'package:fidibo_paper/choose.dart';
-import 'package:fidibo_paper/constants.dart';
-import 'package:fidibo_paper/coordinates.dart';
-import 'package:fidibo_paper/responsive.dart';
-import 'package:fidibo_paper/square.dart';
+import 'package:fidibo_paper/features/game/domain/entities/choose.dart';
+import 'package:fidibo_paper/application/constants.dart';
+import 'package:fidibo_paper/features/game/domain/entities/coordinates.dart';
+import 'package:fidibo_paper/commons/responsive.dart';
+import 'package:fidibo_paper/features/game/domain/entities/square.dart';
 import 'package:flutter/material.dart';
 
 class RunningGameScreen extends StatefulWidget {

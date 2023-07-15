@@ -1,4 +1,4 @@
-import 'package:fidibo_paper/constants.dart';
+import 'package:fidibo_paper/application/constants.dart';
 import 'package:flutter/material.dart';
 
 ThemeData getLightTheme() {

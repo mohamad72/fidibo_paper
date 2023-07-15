@@ -1,5 +1,5 @@
-import 'package:fidibo_paper/coordinates.dart';
-import 'package:fidibo_paper/wall.dart';
+import 'package:fidibo_paper/features/game/domain/entities/coordinates.dart';
+import 'package:fidibo_paper/features/game/domain/entities/wall.dart';
 
 enum DirectionMove {
   top(Coordinates(x: 0, y: -1)),

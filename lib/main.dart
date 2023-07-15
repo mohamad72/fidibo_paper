@@ -1,9 +1,9 @@
 import 'package:fidibo_paper/app_routes.dart';
-import 'package:fidibo_paper/before_start_game.dart';
-import 'package:fidibo_paper/light_theme.dart';
-import 'package:fidibo_paper/running_game_screen.dart';
+import 'package:fidibo_paper/features/game/presentations/pages/before_start_game.dart';
+import 'package:fidibo_paper/application/light_theme.dart';
+import 'package:fidibo_paper/features/game/presentations/pages/running_game_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:fidibo_paper/get_it_service_locator.dart' as di_game;
+import 'package:fidibo_paper/features/game/get_it_service_locator.dart' as di_game;
 
 void main() {
   setupGetIt();

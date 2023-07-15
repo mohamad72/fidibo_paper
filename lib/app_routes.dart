@@ -1,6 +1,6 @@
-import 'package:fidibo_paper/before_start_game.dart';
-import 'package:fidibo_paper/running_game_screen.dart';
-import 'package:fidibo_paper/square.dart';
+import 'package:fidibo_paper/features/game/presentations/pages/before_start_game.dart';
+import 'package:fidibo_paper/features/game/presentations/pages/running_game_screen.dart';
+import 'package:fidibo_paper/features/game/domain/entities/square.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter appRouter = GoRouter(

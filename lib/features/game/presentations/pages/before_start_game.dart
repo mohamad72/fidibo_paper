@@ -1,15 +1,15 @@
 import 'dart:math';
 
 import 'package:collection/collection.dart';
-import 'package:fidibo_paper/before_start_game_cubit.dart';
-import 'package:fidibo_paper/before_start_game_state.dart';
-import 'package:fidibo_paper/choose.dart';
-import 'package:fidibo_paper/constants.dart';
-import 'package:fidibo_paper/coordinates.dart';
-import 'package:fidibo_paper/direction_move.dart';
-import 'package:fidibo_paper/responsive.dart';
-import 'package:fidibo_paper/square.dart';
-import 'package:fidibo_paper/text_style.dart';
+import 'package:fidibo_paper/features/game/presentations/managers/before_start_game_cubit.dart';
+import 'package:fidibo_paper/features/game/presentations/managers/before_start_game_state.dart';
+import 'package:fidibo_paper/features/game/domain/entities/choose.dart';
+import 'package:fidibo_paper/application/constants.dart';
+import 'package:fidibo_paper/features/game/domain/entities/coordinates.dart';
+import 'package:fidibo_paper/features/game/domain/entities/direction_move.dart';
+import 'package:fidibo_paper/commons/responsive.dart';
+import 'package:fidibo_paper/features/game/domain/entities/square.dart';
+import 'package:fidibo_paper/commons/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';

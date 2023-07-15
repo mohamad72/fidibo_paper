@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
-import 'package:fidibo_paper/choose.dart';
-import 'package:fidibo_paper/coordinates.dart';
-import 'package:fidibo_paper/direction_move.dart';
-import 'package:fidibo_paper/wall.dart';
+import 'package:fidibo_paper/features/game/domain/entities/choose.dart';
+import 'package:fidibo_paper/features/game/domain/entities/coordinates.dart';
+import 'package:fidibo_paper/features/game/domain/entities/direction_move.dart';
+import 'package:fidibo_paper/features/game/domain/entities/wall.dart';
 
 class Square extends Equatable {
   final int id;
