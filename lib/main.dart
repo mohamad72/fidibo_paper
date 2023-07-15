@@ -1,3 +1,4 @@
+import 'package:fidibo_paper/app_routes.dart';
 import 'package:fidibo_paper/before_start_game.dart';
 import 'package:fidibo_paper/light_theme.dart';
 import 'package:fidibo_paper/running_game_screen.dart';
@@ -12,10 +13,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Fidibo Paper',
       theme: getLightTheme(),
-      home: const BeforeStartGame(),
+      routerConfig: appRouter,
+      localizationsDelegates: const [
+        DefaultWidgetsLocalizations.delegate,
+      ],
+      builder: (_, child) => child == null ? const SizedBox() : Directionality(textDirection: TextDirection.rtl, child: child),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

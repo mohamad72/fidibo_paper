@@ -10,6 +10,7 @@ import 'package:fidibo_paper/running_game_screen.dart';
 import 'package:fidibo_paper/square.dart';
 import 'package:fidibo_paper/text_style.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class BeforeStartGame extends StatefulWidget {
   const BeforeStartGame({Key? key}) : super(key: key);
@@ -119,7 +120,7 @@ class _BeforeStartGameState extends State<BeforeStartGame> {
                   padding: const EdgeInsets.all(20.0),
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => RunningGameScreen(squaresList: acceptedSquares)));
+                      context.push('/running',extra: acceptedSquares);
                     },
                     child: Text(
                       'شروع با ${acceptedSquares.length} مهره',
